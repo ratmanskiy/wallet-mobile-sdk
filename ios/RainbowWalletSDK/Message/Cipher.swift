@@ -30,8 +30,8 @@ final class Cipher {
     }
     
     static func deriveSymmetricKey(
-        with ownPrivateKey: CoinbaseWalletSDK.PrivateKey,
-        _ peerPublicKey: CoinbaseWalletSDK.PublicKey
+        with ownPrivateKey: RainbowWalletSDK.PrivateKey,
+        _ peerPublicKey: RainbowWalletSDK.PublicKey
     ) throws -> SymmetricKey {
         let sharedSecret = try ownPrivateKey.sharedSecretFromKeyAgreement(with: peerPublicKey)
         return sharedSecret.hkdfDerivedSymmetricKey(

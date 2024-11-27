@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension CoinbaseWalletSDK {
+extension RainbowWalletSDK {
     public enum Error: Swift.Error {
         case encodingFailed
         case decodingFailed

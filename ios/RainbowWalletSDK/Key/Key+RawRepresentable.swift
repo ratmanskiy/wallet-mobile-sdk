@@ -12,8 +12,8 @@ public protocol RawRepresentableKey: Codable {
     var rawRepresentation: Data { get }
 }
 
-extension CoinbaseWalletSDK.PrivateKey: RawRepresentableKey {}
-extension CoinbaseWalletSDK.PublicKey: RawRepresentableKey {}
+extension RainbowWalletSDK.PrivateKey: RawRepresentableKey {}
+extension RainbowWalletSDK.PublicKey: RawRepresentableKey {}
 
 extension RawRepresentableKey {
     public init(from decoder: Decoder) throws {

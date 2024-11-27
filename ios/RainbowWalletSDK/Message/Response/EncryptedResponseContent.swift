@@ -16,7 +16,7 @@ public enum EncryptedResponseContent: EncryptedContent {
         switch self {
         case let .response(requestId, encryptedResults):
             guard let symmetricKey = symmetricKey else {
-                throw CoinbaseWalletSDK.Error.missingSymmetricKey
+                throw RainbowWalletSDK.Error.missingSymmetricKey
             }
             let values: [ResponseContent.Value] = try Cipher.decrypt(encryptedResults, with: symmetricKey)
             return .response(requestId: requestId, values: values)
@@ -39,7 +39,7 @@ extension ResponseContent {
         switch self {
         case let .response(requestId, results):
             guard let symmetricKey = symmetricKey else {
-                throw CoinbaseWalletSDK.Error.missingSymmetricKey
+                throw RainbowWalletSDK.Error.missingSymmetricKey
             }
             let encrypted = try Cipher.encrypt(results, with: symmetricKey)
             return .response(requestId: requestId, data: encrypted)

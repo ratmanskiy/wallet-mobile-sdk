@@ -3,24 +3,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "CoinbaseWalletSDK",
+    name: "RainbowWalletSDK",
     platforms: [.iOS(.v13)],
     products: [
         .library(
-            name: "CoinbaseWalletSDK",
-            targets: ["CoinbaseWalletSDK"]
+            name: "RainbowWalletSDK",
+            targets: ["RainbowWalletSDK"]
         )
     ],
     targets: [
         .target(
-            name: "CoinbaseWalletSDK",
-            path: "ios/CoinbaseWalletSDK",
+            name: "RainbowWalletSDK",
+            path: "ios/RainbowWalletSDK",
             exclude: ["Host", "Test"]
         ),
         .testTarget(
-            name: "CoinbaseWalletSDKTests",
-            dependencies: ["CoinbaseWalletSDK"],
-            path: "ios/CoinbaseWalletSDK/Test"
+            name: "RainbowWalletSDKTests",
+            dependencies: ["RainbowWalletSDK"],
+            path: "ios/RainbowWalletSDK/Test"
         )
     ]
 )

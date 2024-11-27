@@ -23,7 +23,7 @@ extension Array: BaseContent where Element: BaseContent {}
 
 public struct BaseMessage<C: BaseContent> {
     public let uuid: UUID
-    public let sender: CoinbaseWalletSDK.PublicKey
+    public let sender: RainbowWalletSDK.PublicKey
     public let content: C
     public let version: String
     public let timestamp: Date

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoinbaseWalletSDK
+import RainbowWalletSDK
 
 class ViewController: UITableViewController {
     
@@ -17,7 +17,7 @@ class ViewController: UITableViewController {
     
     @IBOutlet weak var logTextView: UITextView!
     
-    private lazy var cbwallet = { CoinbaseWalletSDK.shared }()
+    private lazy var cbwallet = { RainbowWalletSDK.shared }()
     private var address: String?
     private let typedData = [
         "types": [
@@ -56,8 +56,8 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isCBWalletInstalledLabel.text = "\(CoinbaseWalletSDK.isCoinbaseWalletInstalled())"
-        self.log("Available MWP Version: \(CoinbaseWalletSDK.getCoinbaseWalletMWPVersion() ?? "none")")
+        isCBWalletInstalledLabel.text = "\(RainbowWalletSDK.isRainbowWalletInstalled())"
+        self.log("Available MWP Version: \(RainbowWalletSDK.getRainbowWalletMWPVersion() ?? "none")")
         updateSessionStatus()
     }
     

@@ -8,18 +8,18 @@
 import Foundation
 import CryptoKit
 
-extension CoinbaseWalletSDK {
+extension RainbowWalletSDK {
     public typealias PrivateKey = Curve25519.KeyAgreement.PrivateKey
     public typealias PublicKey = Curve25519.KeyAgreement.PublicKey
 }
 
 final class KeyManager {
-    private(set) var ownPrivateKey: CoinbaseWalletSDK.PrivateKey
-    var ownPublicKey: CoinbaseWalletSDK.PublicKey {
+    private(set) var ownPrivateKey: RainbowWalletSDK.PrivateKey
+    var ownPublicKey: RainbowWalletSDK.PublicKey {
         return ownPrivateKey.publicKey
     }
     
-    private(set) var peerPublicKey: CoinbaseWalletSDK.PublicKey?
+    private(set) var peerPublicKey: RainbowWalletSDK.PublicKey?
     
     private(set) var symmetricKey: SymmetricKey?
     
@@ -32,7 +32,7 @@ final class KeyManager {
         
         guard let storedKey = try? storage.read(.ownPrivateKey) else {
             // generate new private key
-            self.ownPrivateKey = CoinbaseWalletSDK.PrivateKey()
+            self.ownPrivateKey = RainbowWalletSDK.PrivateKey()
             try? self.resetOwnPrivateKey(with: ownPrivateKey)
             return
         }
@@ -45,7 +45,7 @@ final class KeyManager {
         }
     }
     
-    func resetOwnPrivateKey(with key: CoinbaseWalletSDK.PrivateKey = CoinbaseWalletSDK.PrivateKey()) throws {
+    func resetOwnPrivateKey(with key: RainbowWalletSDK.PrivateKey = RainbowWalletSDK.PrivateKey()) throws {
         self.symmetricKey = nil
         self.peerPublicKey = nil
         self.ownPrivateKey = key
@@ -55,7 +55,7 @@ final class KeyManager {
         try storage.delete(.peerPublicKey)
     }
     
-    func storePeerPublicKey(_ key: CoinbaseWalletSDK.PublicKey) throws {
+    func storePeerPublicKey(_ key: RainbowWalletSDK.PublicKey) throws {
         self.peerPublicKey = key
         self.symmetricKey = try Cipher.deriveSymmetricKey(with: ownPrivateKey, key)
         

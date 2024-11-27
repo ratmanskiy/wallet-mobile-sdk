@@ -9,16 +9,16 @@ import Foundation
 import CryptoKit
 import UIKit
 
-public final class CoinbaseWalletSDK {
+public final class RainbowWalletSDK {
     
-    static public func isCoinbaseWalletInstalled() -> Bool {
-        return UIApplication.shared.canOpenURL(URL(string: "cbwallet://")!)
+    static public func isRainbowWalletInstalled() -> Bool {
+        return UIApplication.shared.canOpenURL(URL(string: "rainbow://")!)
     }
     
-    static public func getCoinbaseWalletMWPVersion() -> String? {
+    static public func getRainbowWalletMWPVersion() -> String? {
         if UIApplication.shared.canOpenURL(URL(string: "mwp+1.1://")!) {
             return "1.1"
-        } else if isCoinbaseWalletInstalled() {
+        } else if isRainbowWalletInstalled() {
             return "1.0"
         } else {
             return nil
@@ -34,11 +34,11 @@ public final class CoinbaseWalletSDK {
     }
     
     static public func configure(
-        host: URL = URL(string: "https://wallet.coinbase.com/wsegue")!,
+        host: URL = URL(string: "https://rnbwapp.com/wsegue")!,
         callback: URL
     ) {
         guard isConfigured == false else {
-            assertionFailure("`CoinbaseWalletSDK.configure` should be called only once.")
+            assertionFailure("`RainbowWalletSDK.configure` should be called only once.")
             return
         }
         
@@ -50,13 +50,13 @@ public final class CoinbaseWalletSDK {
         }
     }
     
-    static public var shared: CoinbaseWalletSDK = {
-        guard let host = CoinbaseWalletSDK.host,
-              let callback = CoinbaseWalletSDK.callback else {
-            preconditionFailure("Missing configuration: call `CoinbaseWalletSDK.configure` before accessing the `shared` instance.")
+    static public var shared: RainbowWalletSDK = {
+        guard let host = RainbowWalletSDK.host,
+              let callback = RainbowWalletSDK.callback else {
+            preconditionFailure("Missing configuration: call `RainbowWalletSDK.configure` before accessing the `shared` instance.")
         }
         
-        return CoinbaseWalletSDK(host: host, callback: callback)
+        return RainbowWalletSDK(host: host, callback: callback)
     }()
     
     // MARK: - Properties
@@ -110,7 +110,7 @@ public final class CoinbaseWalletSDK {
                 callback: callback,
                 initialActions: initialActions
             ),
-            version: CoinbaseWalletSDK.version,
+            version: RainbowWalletSDK.version,
             timestamp: Date(),
             callbackUrl: callback.absoluteString
         )
@@ -136,7 +136,7 @@ public final class CoinbaseWalletSDK {
             uuid: UUID(),
             sender: keyManager.ownPublicKey,
             content: .request(actions: request.actions, account: request.account),
-            version: CoinbaseWalletSDK.version,
+            version: RainbowWalletSDK.version,
             timestamp: Date(),
             callbackUrl: callback.absoluteString
         )

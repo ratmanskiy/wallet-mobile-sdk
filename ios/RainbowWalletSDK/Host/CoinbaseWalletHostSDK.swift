@@ -8,10 +8,10 @@
 import Foundation
 import CryptoKit
 
-public final class CoinbaseWalletHostSDK {
+public final class RainbowWalletHostSDK {
     public static func deriveSymmetricKey(
-        with ownPrivateKey: CoinbaseWalletSDK.PrivateKey,
-        _ peerPublicKey: CoinbaseWalletSDK.PublicKey
+        with ownPrivateKey: RainbowWalletSDK.PrivateKey,
+        _ peerPublicKey: RainbowWalletSDK.PublicKey
     ) throws -> SymmetricKey {
         return try Cipher.deriveSymmetricKey(with: ownPrivateKey, peerPublicKey)
     }

@@ -39,7 +39,7 @@ extension ResponseMessage {
                 BaseMessage<[ActionResult]>.copy(self, replaceContentWith: results)
             )
         case .failure(_, let description):
-            return .failure(CoinbaseWalletSDK.Error.walletReturnedError(description))
+            return .failure(RainbowWalletSDK.Error.walletReturnedError(description))
         }
     }
 }

@@ -25,7 +25,7 @@ final class MessageConverter {
         urlComponents?.queryItems = [URLQueryItem(name: "p", value: encodedString)]
         
         guard let url = urlComponents?.url else {
-            throw CoinbaseWalletSDK.Error.encodingFailed
+            throw RainbowWalletSDK.Error.encodingFailed
         }
         
         return url
@@ -48,11 +48,11 @@ final class MessageConverter {
             let queryItem = urlComponents.queryItems?.first(where: { $0.name == "p" }),
             let encodedString = queryItem.value
         else {
-            throw CoinbaseWalletSDK.Error.decodingFailed
+            throw RainbowWalletSDK.Error.decodingFailed
         }
         
         guard let data = Data(base64Encoded: encodedString) else {
-            throw CoinbaseWalletSDK.Error.decodingFailed
+            throw RainbowWalletSDK.Error.decodingFailed
         }
         
         let decoder = JSONDecoder()

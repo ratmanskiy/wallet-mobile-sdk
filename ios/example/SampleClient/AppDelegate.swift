@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoinbaseWalletSDK
+import RainbowWalletSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.swizzleOpenURL()
         
         #warning("Should use universal links in production")
-        CoinbaseWalletSDK.configure(
+        RainbowWalletSDK.configure(
 //            host: URL(string: "samplewallet://wsegue")!,
             callback: URL(string: "myappxyz://mycallback")!
         )
@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if (try? CoinbaseWalletSDK.shared.handleResponse(url)) == true {
+        if (try? RainbowWalletSDK.shared.handleResponse(url)) == true {
             return true
         }
         // handle other types of deep links
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if let url = userActivity.webpageURL,
-           (try? CoinbaseWalletSDK.shared.handleResponse(url)) == true {
+           (try? RainbowWalletSDK.shared.handleResponse(url)) == true {
             return true
         }
         // handle other types of deep links

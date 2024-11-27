@@ -10,14 +10,14 @@ import Foundation
 extension ResponseMessage {
     public init(
         uuid: UUID = UUID(),
-        sender: CoinbaseWalletSDK.PublicKey,
+        sender: RainbowWalletSDK.PublicKey,
         content: ResponseContent,
         timestamp: Date = Date()
     ) {
         self.uuid = uuid
         self.sender = sender
         self.content = content
-        self.version = CoinbaseWalletSDK.version
+        self.version = RainbowWalletSDK.version
         self.timestamp = timestamp
         self.callbackUrl = nil
     }
